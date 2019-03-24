@@ -1,0 +1,34 @@
+:/^# Home/
+
+# Home
+
+/u/acme/a
+
+# Docs
+
+intro(1) acme(1) acme(4)  9p(1)  win(1) rc(1) regexp(7) plumb(1) acmeevent(1)
+
+# Config
+
+/u/lib/plumbing:/pdf/
+/u/lib/plumbing:/geom/
+cat /u/lib/plumbing | 9p write plumb/rules
+
+# Src
+
+/u/9/plan9port/src
+/u/9/plan9port/src/cmd/9term/win.c
+
+# Commands
+
+/u/bin/ac
+
+win
+xsel -o -p
+/u/bin/Run
+/u/bin/p 
+
+# Fonts
+
+fontsrv
+9p ls font

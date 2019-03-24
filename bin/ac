@@ -1,0 +1,5 @@
+: ${PLAN9=/home/lisergey/9/plan9port}
+PATH=$PATH:$PLAN9/bin
+
+export PLAN9 PATH
+acme $HOME/acme/a
