@@ -1,4 +1,4 @@
-M = Run ac p to
+ M = Run ac p to com
 PREFIX = $(HOME)
 B = $(PREFIX)/bin
 
