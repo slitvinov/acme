@@ -6,7 +6,7 @@
 
 # Docs
 
-intro(1) acme(1) acme(4)  9p(1)  win(1) rc(1) regexp(7) plumb(1) acmeevent(1)
+intro(1) acme(1) acme(4)  9p(1)  win(1) rc(1) regexp(7) plumb(1) acmeevent(1) make()(1)
 
 # Config
 
@@ -31,4 +31,4 @@ xsel -o -p
 # Fonts
 
 fontsrv
-9p ls font
+9p ls font/DroidSansMono
