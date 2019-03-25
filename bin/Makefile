@@ -1,4 +1,4 @@
- M = Run ac p to com push
+ M = Run ac p to com push add pull
 PREFIX = $(HOME)
 B = $(PREFIX)/bin
 
