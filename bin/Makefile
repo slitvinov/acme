@@ -1,4 +1,4 @@
- M = Run ac p to com push add pull
+ M = Run ac h p to com push add pull py
 PREFIX = $(HOME)
 B = $(PREFIX)/bin
 

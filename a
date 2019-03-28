@@ -9,3 +9,9 @@
 
 /u/mfer/poc/lamb/
 /u/co/poc/sdpd/
+
+/u/hydro/sim/sim04_univel/tool/
+/u/hydro/poc/11_coal
+/u/coa
+
+rsync  --exclude 'p_*.h5' --exclude '*.vtk' -pavz falcon:/scratch/kpetr/pub/coal/field coa

@@ -3,10 +3,12 @@
 # Home
 
 /u/acme/a
+/u/acme/bin
+/u/acme/bin/ac
 
 # Docs
 
-intro(1) acme(1) acme(4)  9p(1)  win(1) rc(1) regexp(7) plumb(1) acmeevent(1) make()(1)
+intro(1) acme(1) acme(4)  9p(1)  win(1) rc(1) regexp(7) plumb(1) acmeevent(1) make()(1) rc(1)
 
 # Config
 

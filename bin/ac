@@ -3,4 +3,4 @@ PATH=$PATH:$PLAN9/bin
 
 export PLAN9 PATH
 
-acme $HOME/acme/a 
+acme -W 1920x1080 $HOME/acme/a 
