@@ -1,6 +1,6 @@
-PLAN9=$HOME/9/plan9port
+PLAN9=/u/9/plan9port
 PATH=$PATH:$PLAN9/bin
 
 export PLAN9 PATH
 
-acme -W 1920x1080 $HOME/acme/a 
+acme -W 1920x1080 /u/acme/a 
