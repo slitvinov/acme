@@ -1,10 +1,9 @@
-#!/bin/rc
+#!/usr/bin/rc
 
 {
         if(test -r /mnt/acme/acme/body)
                 cat /mnt/acme/acme/body
-        if not
-                cat /dev/text
+        if not cat /dev/text
 } | grep '^[^         ]*%[         ]*'$1  |
         {echo; cat} | pr -t -n | sort -u +1 | sort -n |
         sed 's/^ *[0-9]+        //' | grep .
