@@ -14,5 +14,7 @@
 /u/hydro/sim/sim04_univel/tool/
 /u/hydro/poc/11_coal
 /u/coa
+/u/tri/poc/lib/tri/kernel.h
 
 rsync  --exclude 'p_*.h5' --exclude '*.vtk' -pavz falcon:/scratch/kpetr/pub/coal/field coa
+
