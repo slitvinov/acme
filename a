@@ -9,6 +9,7 @@
 
 /u/mfer/poc/lamb/
 /u/co/poc/sdpd/
+/u/co/example/kernel
 
 /home/lisergey/tri/poc/example/sim/main.c
 /u/hydro/sim/sim04_univel/tool/
@@ -17,4 +18,3 @@
 /u/tri/poc/lib/tri/kernel.h
 
 rsync  --exclude 'p_*.h5' --exclude '*.vtk' -pavz falcon:/scratch/kpetr/pub/coal/field coa
-
