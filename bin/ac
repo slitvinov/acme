@@ -3,5 +3,7 @@ PATH=$PATH:$PLAN9/bin
 
 export PLAN9 PATH
 
+unset SHELL
+
 plumber
 acme -W 1920x1080 /u/acme/a 
