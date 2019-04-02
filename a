@@ -4,13 +4,14 @@
 /u/book
 /u/paper
 /u/mfer/poc/lamb/main.mac
-/u/9/plan9port/src/cmd/9term/win.c
 
 /u/mfer/poc/lamb/
-/u/co/poc/sdpd/
-/u/co/example/kernel
+/u/co/poc/sdpd/3d/morris.c
+/u/src/gts/src/point.c:/gts_point_is_inside_surface/
+/u/src/gts/src/point.c:/ray_intersects_triangle/
+/u/src/gts/src/point.c:/gts_point_orientation_3d_sos/
 
-/home/lisergey/tri/poc/example/sim/main.c
+
 /u/hydro/sim/sim04_univel/tool/
 /u/hydro/poc/11_coal
 /u/coa
