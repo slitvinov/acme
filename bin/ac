@@ -1,7 +1,11 @@
+HOME=/u
 PLAN9=/u/9/plan9port
 PATH=$PATH:$PLAN9/bin
+GIT_PAGER=cat
 
-export PLAN9 PATH
+export PLAN9 PATH GIT_PAGER HOME
+
+unset SHELL
 
 plumber
 acme -W 1920x1080 /u/acme/a 
