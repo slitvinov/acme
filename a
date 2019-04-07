@@ -4,17 +4,19 @@
 /u/book
 /u/paper
 /u/mfer/poc/lamb/main.mac
-/u/9/plan9port/src/cmd/9term/win.c
-
 
 /u/mfer/poc/lamb/
-/u/co/poc/sdpd/
-/u/co/example/kernel
+/u/co/poc/sdpd/3d/morris.c
+/u/src/gts/src/point.c:/gts_point_is_inside_surface/
+/u/src/gts/src/point.c:/ray_intersects_triangle/
+/u/src/gts/src/point.c:/gts_point_orientation_3d_sos/
+/u/src/gts/src/point.c:/gts_point_triangle_distance2/
 
-/home/lisergey/tri/poc/example/sim/main.c
 /u/hydro/sim/sim04_univel/tool/
 /u/hydro/poc/11_coal
 /u/coa
-/u/tri/poc/lib/tri/kernel.h
+/u/co/lib/edg.c
+/u/co/lib/tri.c
+/u/co/example/edg/main.c
 
 rsync  --exclude 'p_*.h5' --exclude '*.vtk' -pavz falcon:/scratch/kpetr/pub/coal/field coa
