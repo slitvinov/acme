@@ -13,7 +13,7 @@ intro(1) acme(1) acme(4)  9p(1)  win(1) rc(1) regexp(7) plumb(1) acmeevent(1) ma
 # Config
 
 /u/lib/plumbing:/pdf/
-cat /u/lib/plumbing | 9p write plumb/rules
+cat bin/plu | 9p write plumb/rules
 
 # Src
 
