@@ -6,7 +6,7 @@
 /u/mfer/poc/lamb/main.mac
 
 /u/mfer/poc/lamb/
-/u/co/poc/sdpd/3d/morris.c
+/u/co/poc/sdpd/3d/mesh.c
 /u/src/gts/src/point.c:/gts_point_is_inside_surface/
 /u/src/gts/src/point.c:/ray_intersects_triangle/
 /u/src/gts/src/point.c:/gts_point_orientation_3d_sos/
@@ -16,7 +16,7 @@
 /u/hydro/poc/11_coal
 /u/coa
 /u/co/lib/edg.c
-/u/co/lib/tri.c
+/u/co/lib/bbox.c
 /u/co/example/edg/main.c
 
 rsync  --exclude 'p_*.h5' --exclude '*.vtk' -pavz falcon:/scratch/kpetr/pub/coal/field coa
