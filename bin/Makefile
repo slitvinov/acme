@@ -1,4 +1,4 @@
- M = Run ac h p to com gui push add pull py
+M =ac add com gui lsort mac p pull push py Run to
 PREFIX = $(HOME)
 B = $(PREFIX)/bin
 

@@ -1,0 +1,12 @@
+<$PLAN9/src/mkhdr
+
+TARG=mac
+OFILES=\
+	win.$O\
+	rcstart.$O\
+	$SYSNAME.$O
+
+HFILES=term.h
+Darwin.$O Linux.$O FreeBSD.$O DragonFly.$O: bsdpty.c
+
+<$PLAN9/src/mkone

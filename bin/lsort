@@ -1,0 +1,3 @@
+#!/bin/sh
+
+printf "%s" "`xargs -n1 | sort | xargs -n9999`"

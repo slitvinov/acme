@@ -10,4 +10,4 @@ unset SHELL
 unset SHELL
 
 plumber
-acme -W 1920x1080 /u/acme/a 
+acme -W 1920x1080 /u/acme/a "$@"
