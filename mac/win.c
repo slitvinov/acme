@@ -60,6 +60,7 @@ int	password;
 int	israw(int);
 
 char *name;
+char *tag;
 
 char **prog;
 Channel *cwait;
@@ -144,6 +145,9 @@ threadmain(int argc, char **argv)
 	case 'n':
 		name = EARGF(usage());
 		break;
+	case 't':
+		tag = EARGF(usage());
+		break;
 	default:
 		usage();
 	}ARGEND
@@ -184,6 +188,9 @@ threadmain(int argc, char **argv)
 	fd = fsopenfd(fs, buf, OWRITE|OCEXEC);
 	write(fd, " Send", 1+4);
 	write(fd, " Font", 1+4);
+	write(fd, " ", 1);
+	if(tag != nil)
+		write(fd, tag, strlen(tag));
 	close(fd);
 	sprint(buf, "%d/event", id);
 	eventfd = fsopen(fs, buf, ORDWR|OCEXEC);
