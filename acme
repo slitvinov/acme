@@ -8,7 +8,7 @@
 
 # Docs
 
-intro(1) acme(1) acme(4)  9p(1)  win(1) rc(1) regexp(7) plumb(1) acmeevent(1) make()(1) rc(1)
+9p(1) acme(1) acme(4) acmeevent(1) acme.rc(1) intro(1) make()(1) plumb(1) rc(1) rc(1) regexp(7) win(1)
 
 # Config
 
@@ -19,6 +19,8 @@ cat bin/plu | 9p write plumb/rules
 
 /u/9/plan9port/src
 /u/9/plan9port/src/cmd/9term/win.c
+/u/9/plan9port/lib/acme.rc
+
 
 # Commands
 
