@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if test $# -eq 0
+then chmod +x $samfile
+else chmod +x "$@"
+fi

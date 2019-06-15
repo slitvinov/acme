@@ -1,0 +1,10 @@
+#!/usr/bin/rc
+
+id=`{9p read acme/new/ctl}
+id=$id(1)
+cmd = $*
+if(~ $#cmd 0) cmd = cat
+
+echo 'name '^`{pwd}^/-^`{basename $cmd(1)} | 9p write acme/$id/ctl
+$cmd | 9p write acme/$id/body
+echo clean | 9p write acme/$id/ctl

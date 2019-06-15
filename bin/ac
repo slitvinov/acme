@@ -4,9 +4,6 @@ PATH=$PATH:$PLAN9/bin
 GIT_PAGER=cat
 
 export PLAN9 PATH GIT_PAGER HOME
-
-unset SHELL
-
 unset SHELL
 
 plumber
