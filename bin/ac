@@ -7,4 +7,4 @@ export PLAN9 PATH GIT_PAGER HOME
 unset SHELL
 
 plumber
-acme -W 1920x1080 /u/acme/a "$@"
+acme -b -W 1920x1080 /u/acme/a "$@"

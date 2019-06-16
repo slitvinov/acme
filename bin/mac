@@ -1,6 +1,5 @@
 #!/usr/bin/rc
 
-win -n maxima maxima
-
-id=`{awk  '$6 ~ /-maxima$/ {print $1}' <{9p read acme/index}}
-echo ' Font'  | 9p write acme/$id/tag
+f=`{basename $samfile}
+c=(Font load'('"$f"')$')
+max -t $"c maxima

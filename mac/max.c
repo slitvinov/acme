@@ -5,7 +5,7 @@
 #include <9pclient.h>
 #include "term.h"
 
-const char *termprog = "win";
+const char *termprog = "max";
 
 #define	EVENTSIZE	256
 #define	STACK	32768
@@ -187,10 +187,9 @@ threadmain(int argc, char **argv)
 	sprint(buf, "%d/tag", id);
 	fd = fsopenfd(fs, buf, OWRITE|OCEXEC);
 	write(fd, " Send", 1+4);
-	write(fd, " Font", 1+4);
 	write(fd, " ", 1);
 	if(tag != nil)
-		write(fd, tag, strlen(tag));
+		write(fd, tag, 1 + strlen(tag));
 	close(fd);
 	sprint(buf, "%d/event", id);
 	eventfd = fsopen(fs, buf, ORDWR|OCEXEC);

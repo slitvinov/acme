@@ -1,8 +1,9 @@
 <$PLAN9/src/mkhdr
 
-TARG=mac
+BIN=$HOME/bin
+TARG=max
 OFILES=\
-	win.$O\
+	max.$O\
 	rcstart.$O\
 	$SYSNAME.$O
 

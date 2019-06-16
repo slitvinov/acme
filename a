@@ -19,4 +19,3 @@ fn c {
 	echo -n 'dot=addr' | winwrite ctl
 	winread addr | awk '{ printf "MX%s %s\n", $1, $2}' | winwrite event
 }
-
