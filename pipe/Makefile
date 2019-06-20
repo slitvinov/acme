@@ -1,5 +1,6 @@
 .POSIX:
-M = sys
+CC=gcc
+M = sys exe popen
 PREC = d
 LINK = $(CC)
 

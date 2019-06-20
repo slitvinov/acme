@@ -1,0 +1,16 @@
+#!/bin/bash
+
+rm -rf in out err
+mkfifo in out err
+
+python  <in 1>out  &
+exec 3> in 4< out
+
+f () {
+	echo "$@" >&3
+	read o <&4
+	echo : $o
+}
+
+f print 92
+
