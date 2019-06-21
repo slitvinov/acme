@@ -1,8 +1,11 @@
 #!/bin/bash
 
-awk '
-BEGIN { printf "\n" }
-!empty($0)
-END { printf "\n" }
-function empty(s) { return s ~ /^[ \t]*$/ }
+t=/tmp/py.$$
+trap 'rm $t; exit 2' 1 2 3 15
+cat > $t
+
+awk -v f="$t" '
+BEGIN { printf "execfile(\"%s\")\n", f }
 ' > /tmp/in
+
+rm $t

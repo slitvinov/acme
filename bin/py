@@ -1,3 +1,11 @@
 #!/bin/bash
 
-nc server 41973 | python2
+t=/tmp/py.$$
+trap 'rm $t; exit 2' 1 2 3 15
+cat > $t
+
+awk -v f="$t" '
+BEGIN { printf "execfile(\"%s\")\n", f }
+' > /tmp/in
+
+rm $t
