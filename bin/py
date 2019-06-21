@@ -1,11 +1,8 @@
 #!/bin/bash
 
-t=/tmp/py.$$
-trap 'rm $t; exit 2' 1 2 3 15
+t=/tmp/py
 cat > $t
 
-awk -v f="$t" '
-BEGIN { printf "execfile(\"%s\")\n", f }
+awk -v t="$t" '
+BEGIN { printf "execfile(\"%s\")\n", t }
 ' > /tmp/in
-
-rm $t

@@ -1,7 +1,24 @@
 #!/bin/bash
 
-rm -rf /tmp/in /tmp/out /tmp/pid /tmp/log
+if test -r /tmp/pid
+then
+	kill `cat /tmp/pid`
+fi
+
+if test -r /tmp/pp
+then
+	kill `cat /tmp/pp`
+fi
+
+if test "$1" = -k
+then
+	exit
+fi
+
+rm -rf /tmp/in /tmp/out /tmp/pid /tmp/log /tmp/pp
 empty -f -i /tmp/in -o /tmp/out -p /tmp/pid -L /tmp/log python2
+
+echo $$ > /tmp/pp
 
 while :
 do empty -r -i /tmp/out
