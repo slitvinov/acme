@@ -10,6 +10,9 @@
 
 /c/lib/kernel/
 
++
+
+
 
 . $PLAN9/lib/acme.rc
 w=157

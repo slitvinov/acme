@@ -1,16 +1,7 @@
 #!/bin/bash
 
-rm -rf in out err
-mkfifo in out err
+rm -rf /tmp/py
+mkfifo /tmp/py
 
-python  <in 1>out  &
-exec 3> in 4< out
-
-f () {
-	echo "$@" >&3
-	read o <&4
-	echo : $o
-}
-
-f print 92
-
+sleep 10000 > /tmp/py &
+python2 < /tmp/py

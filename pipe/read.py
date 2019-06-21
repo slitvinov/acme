@@ -1,12 +1,7 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
-import code
+import subprocess
 
-def e(s):
-	co = code.compile_command(s, "<stdin>", "eval")
-	if co:
-		i.runcode(co)
-
-i = code.InteractiveInterpreter()
-e("x = ")
+c = subprocess.run('echo $HOME', shell = True)
+#print(c)
 

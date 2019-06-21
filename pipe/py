@@ -1,0 +1,8 @@
+#!/bin/bash
+
+awk '
+BEGIN { printf "\n" }
+!empty($0)
+END { printf "\n" }
+function empty(s) { return s ~ /^[ \t]*$/ }
+' > /tmp/in
