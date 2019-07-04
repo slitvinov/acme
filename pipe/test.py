@@ -10,3 +10,4 @@ plt.plot(xrange, norm_pdf(xrange, -1, 3), label=r"$\mu=-1; \ \sigma^2=3$")
 plt.legend(fontsize=15)
 
 plt.show()
+exit()
