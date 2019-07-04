@@ -1,6 +1,6 @@
 #!/bin/bash
 
-i=py
+i=oc
 
 if test -r /tmp/$i.pid
 then
@@ -18,7 +18,7 @@ then
 fi
 
 rm -rf /tmp/$i.in /tmp/$i.out /tmp/$i.pid /tmp/$i.log /tmp/$i.pp
-empty -f -i /tmp/$i.in -o /tmp/$i.out -p /tmp/$i.pid -L /tmp/$i.log python2
+empty -f -i /tmp/$i.in -o /tmp/$i.out -p /tmp/$i.pid -L /tmp/$i.log octave -qf
 
 echo $$ > /tmp/$i.pp
 

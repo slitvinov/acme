@@ -1,4 +1,4 @@
-#!/usr/bin/rc
+#!/usr/bin/env rc
 
 f=`{basename $samfile}
 c=(Font load'('"$f"')$')

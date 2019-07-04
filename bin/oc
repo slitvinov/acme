@@ -1,0 +1,9 @@
+#!/bin/bash
+
+i=oc
+t=/tmp/$i.m
+cat > $t
+
+awk -v t="$t" '
+BEGIN { printf "source(\"%s\")\n", t }
+' > /tmp/$i.in

@@ -1,8 +1,10 @@
 #!/bin/bash
 
-t=/tmp/py
+i=py
+
+t=/tmp/$i.py
 cat > $t
 
 awk -v t="$t" '
 BEGIN { printf "execfile(\"%s\")\n", t }
-' > /tmp/in
+' > /tmp/$i.in
