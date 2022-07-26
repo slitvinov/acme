@@ -6,7 +6,8 @@
 
 # Docs
 
-9p(1) acme(1) acme(4) acmeevent(1) acme.rc(1) intro(1) make()(1) plumb(1) rc(1) rc(1) regexp(7) win(1)
+9p(1) acme(1) acme(4) acmeevent(1) acme.rc(1) intro(1) make()(1) plumb(1) rc(1) regexp(7) win(1)
+lynx -dump http://doc.cat-v.org/plan_9/4th_edition/papers/acme
 
 # Config
 
