@@ -5,10 +5,6 @@
 
 /u/book
 /u/paper
-/u/mfer/poc/lamb/main.mac
-/u/mfer/poc/lamb/
-
-/c/lib/kernel/
 
 
 . $PLAN9/lib/acme.rc
