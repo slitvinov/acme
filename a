@@ -1,11 +1,10 @@
-/u/acme/acme
+dв/u/acme/acme
 /u/acme/web
 /u/acme/bin
 /u/acme/edit
 
 /u/book
 /u/paper
-
 
 . $PLAN9/lib/acme.rc
 w=157
@@ -15,3 +14,5 @@ fn c {
 	echo -n 'dot=addr' | winwrite ctl
 	winread addr | awk '{ printf "MX%s %s\n", $1, $2}' | winwrite event
 }
+
+/u/am/am/homeworks/ex_01/
