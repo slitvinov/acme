@@ -1,10 +1,2 @@
-#!/bin/bash
+python $samfile "$@"
 
-i=py
-
-t=/tmp/$i.py
-cat > $t
-
-awk -v t="$t" '
-BEGIN { printf "execfile(\"%s\")\n", t }
-' > /tmp/$i.in

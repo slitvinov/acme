@@ -1,6 +1,6 @@
 M = ac add com cx gp gn gd gui lsort m mac mouse new oc oo p pp pull push py Run to ws
-PREFIX = $(HOME)/.local
-B = $(PREFIX)/bin
+PREFIX = $(HOME)
+B = $(PREFIX)/.local/bin
 
 all:
 	mkdir -p $B && \
