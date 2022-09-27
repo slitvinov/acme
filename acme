@@ -11,8 +11,8 @@ lynx -dump http://doc.cat-v.org/plan_9/4th_edition/papers/acme
 
 # Config
 
-/u/lib/plumbing:/pdf/
-cat bin/plu | 9p write plumb/rules
+bin/plumbing:/pdf/
+cat bin/plumbing | 9p write plumb/rules
 
 # Src
 

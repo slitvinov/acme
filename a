@@ -1,4 +1,4 @@
-dв/u/acme/acme
+/u/acme/acme
 /u/acme/web
 /u/acme/bin
 /u/acme/edit
@@ -15,4 +15,5 @@ fn c {
 	winread addr | awk '{ printf "MX%s %s\n", $1, $2}' | winwrite event
 }
 
-/u/am/am/homeworks/ex_01/
+/u/am/am/homeworks/ex_02/main.tex 
+/u/am/notes/main_AM207.tex 
