@@ -1,2 +1,2 @@
-python $samfile "$@"
+exec python $samfile "$@"
 

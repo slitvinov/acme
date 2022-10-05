@@ -4,24 +4,27 @@
 /u/acme/bin
 /u/acme/bin/ac
 
-# Docs
+# docs
 
 9p(1) acme(1) acme(4) acmeevent(1) acme.rc(1) intro(1) make()(1) plumb(1) rc(1) regexp(7) win(1)
 lynx -dump http://doc.cat-v.org/plan_9/4th_edition/papers/acme
+/u/acme/doc/rc
 
-# Config
+# config
 
 bin/plumbing:/pdf/
 cat bin/plumbing | 9p write plumb/rules
 
 # Src
 
-/u/9/plan9port/src
-/u/9/plan9port/src/cmd/9term/win.c
-/u/9/plan9port/lib/acme.rc
+/u/plan9port/src
+
+# acme
+/u/plan9port/src/cmd/9term/win.c
+/u/plan9port/lib/acme.rc
 
 
-# Commands
+# commands
 
 /u/bin/ac
 
@@ -34,3 +37,4 @@ xsel -o -p
 
 plumber
 9p ls plumb
+
