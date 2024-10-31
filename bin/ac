@@ -7,4 +7,4 @@ unset SHELL
 
 plumber
 fontsrv -p .
-acme  -W 1920x1080 /u/acme/a "$@"
+exec acme  -f /mnt/font/Ubuntu/18a/font  -W 1920x1080 /u/acme/a "$@"

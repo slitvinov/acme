@@ -6,6 +6,22 @@
 /u/book
 /u/paper
 
+/u/burgers
+/u/cup2d
+/u/cup3d
+/u/lammps
+/u/private
+/u/tsponge/cylinder
+
+/u/plan9port/src/cmd/acme
+/u/plan9port/src/
+
+setxkbmap -layout us,ru -option grp:caps_toggle
+
+win
+9term
+win python
+
 . $PLAN9/lib/acme.rc
 w=157
 fn c {	
@@ -14,8 +30,3 @@ fn c {
 	echo -n 'dot=addr' | winwrite ctl
 	winread addr | awk '{ printf "MX%s %s\n", $1, $2}' | winwrite event
 }
-
-/u/am/am/homeworks/ex_02/main.tex
-/u/am/notes/main_AM207.tex
-/u/burgers
-/u/am/am/homeworks/
