@@ -14,8 +14,8 @@ win
 9term
 win python3
 
+
 . $PLAN9/lib/acme.rc
-w=157
 fn c {	
 	echo -n Edit ,d | winwrite body
 	echo -n /Edit ,d/ |  winwrite addr
