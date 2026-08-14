@@ -16,9 +16,7 @@ win python3
 
 
 . $PLAN9/lib/acme.rc
-fn c {	
-	echo -n Edit ,d | winwrite body
-	echo -n /Edit ,d/ |  winwrite addr
-	echo -n 'dot=addr' | winwrite ctl
-	winread addr | awk '{ printf "MX%s %s\n", $1, $2}' | winwrite event
+fn c {
+	echo -n , | winwrite addr
+	winwrite data </dev/null
 }

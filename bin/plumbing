@@ -41,7 +41,7 @@ data matches '[a-zA-Z¡-￿0-9_\-./@]+'
 data matches '([a-zA-Z¡-￿0-9_\-./@]+)\.(jpe?g|JPE?G|gif|GIF|tiff?|TIFF?|ppm|bit|png|PNG)'
 arg isfile	$0
 plumb to image
-plumb start 9 feh $file
+plumb start open $file
 
 type is text
 data matches '([a-zA-Z¡-￿0-9_\-./]+)\.(pdf|PDF)'
