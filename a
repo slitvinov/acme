@@ -3,15 +3,8 @@
 /u/acme/bin
 /u/acme/edit
 
-/u/book
+/u/books
 /u/paper
-
-/u/burgers
-/u/cup2d
-/u/cup3d
-/u/lammps
-/u/private
-/u/tsponge/cylinder
 
 /u/plan9port/src/cmd/acme
 /u/plan9port/src/
@@ -20,7 +13,7 @@ setxkbmap -layout us,ru -option grp:caps_toggle
 
 win
 9term
-win python
+win python3
 
 . $PLAN9/lib/acme.rc
 w=157

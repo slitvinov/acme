@@ -1,0 +1,45 @@
+#!/bin/sh
+set -e
+
+APP=/Applications/Acme.app
+AC=/u/acme/bin/ac
+PLAN9=/u/plan9port
+
+mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
+
+cat > "$APP/Contents/Info.plist" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+ "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleName</key>            <string>Acme</string>
+	<key>CFBundleIdentifier</key>      <string>local.acme</string>
+	<key>CFBundleVersion</key>         <string>1.0</string>
+	<key>CFBundlePackageType</key>     <string>APPL</string>
+	<key>CFBundleExecutable</key>      <string>Acme</string>
+</dict>
+</plist>
+EOF
+
+cat > "$APP/Contents/MacOS/Acme" <<EOF
+#!/bin/sh
+export HOME=/u
+export PLAN9=$PLAN9
+export PATH=\$PLAN9/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin
+export NAMESPACE=/tmp/ns.\$USER.:0
+mkdir -p \$NAMESPACE
+exec $AC >/tmp/acme.app.log 2>&1
+EOF
+chmod +x "$APP/Contents/MacOS/Acme"
+
+if [ -f "$PLAN9/mac/spaceglenda.icns" ]; then
+	cp "$PLAN9/mac/spaceglenda.icns" "$APP/Contents/Resources/Acme.icns"
+	/usr/libexec/PlistBuddy -c 'Add :CFBundleIconFile string Acme' \
+		"$APP/Contents/Info.plist" 2>/dev/null || true
+fi
+
+touch "$APP"
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f "$APP" 2>/dev/null || true
+
+echo "created $APP (log: /tmp/acme.app.log)"
