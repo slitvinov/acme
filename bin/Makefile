@@ -1,4 +1,4 @@
-M = ac add com cx gp gn gd gui lsort m mac mouse new oc oo p pp pull push py Run to ws
+M = ac add Book com cx gp gn gd gui lsort m mac mg mkapp new p pull push py Run to ws
 PREFIX = $(HOME)
 B = $(PREFIX)/.local/bin
 

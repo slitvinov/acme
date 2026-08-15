@@ -1,3 +1,0 @@
-#!/bin/sh
-s=0.2
-xinput set-prop 10 156 $s, 0, 0, 0, $s, 0, 0, 0, 1

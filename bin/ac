@@ -1,6 +1,6 @@
 HOME=/u
 GIT_PAGER=cat
-PATH=/u/acme/bin:/u/plan9port/bin:$PATH
+PATH=/u/acme/bin:/u/plan9port/bin:/u/.local/bin:$PATH
 
 export GIT_PAGER HOME
 unset SHELL
@@ -11,4 +11,4 @@ font=Ubuntu
 fontsrv -p . 2>/dev/null | /usr/bin/grep -qx $font/ || font=Menlo-Regular
 
 plumber
-exec acme -f /mnt/font/$font/18a/font -W 1920x1080 /u/acme/a "$@"
+exec acme -f /mnt/font/$font/15a/font /u/acme/a "$@"
