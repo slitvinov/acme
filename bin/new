@@ -1,4 +1,4 @@
-#!/usr/bin/rc
+#!/usr/bin/env rc
 
 id=`{9p read acme/new/ctl}
 id=$id(1)

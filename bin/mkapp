@@ -18,6 +18,8 @@ cat > "$APP/Contents/Info.plist" <<EOF
 	<key>CFBundleVersion</key>         <string>1.0</string>
 	<key>CFBundlePackageType</key>     <string>APPL</string>
 	<key>CFBundleExecutable</key>      <string>Acme</string>
+	<key>LSArchitecturePriority</key>
+	<array><string>arm64</string></array>
 </dict>
 </plist>
 EOF

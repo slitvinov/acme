@@ -9,3 +9,6 @@ all:
 		cp $$i $B; \
 		chmod +x $B/$$i; \
 	done
+	S=`python3 -c 'import site; print(site.getusersitepackages())'` && \
+	mkdir -p $$S && \
+	cp $(PREFIX)/acme/lib/usercustomize.py $$S/usercustomize.py
