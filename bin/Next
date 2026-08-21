@@ -1,0 +1,147 @@
+#!/bin/sh
+cd /u/leetcode || exit 1
+refresh_solved() {
+	S=$(/u/.venv/scipy/bin/python -c 'import browser_cookie3
+cj = browser_cookie3.chrome(domain_name="leetcode.com")
+print(";".join(c.name + "=" + c.value for c in cj))')
+	curl -s -m 15 -H 'User-Agent: Mozilla/5.0' -b "$S" \
+		https://leetcode.com/api/problems/all/ |
+	/u/.venv/scipy/bin/python -c 'import json, sys
+d = json.load(sys.stdin)
+json.dump(sorted({str(p["stat"]["frontend_question_id"])
+                  for p in d["stat_status_pairs"] if p["status"] == "ac"}),
+          open("/u/leetcode/.solved.json", "w"))'
+}
+if [ ! -f .solved.json ]
+then
+	refresh_solved
+elif [ -z "$(find .solved.json -newermt '-5 minutes' 2>/dev/null)" ]
+then
+	refresh_solved >/dev/null 2>&1 &
+fi
+if [ "$1" = tags ]
+then
+	exec /u/.venv/scipy/bin/python - <<'EOF'
+import json, urllib.request
+q = {"query": "query{questionTopicTags{edges{node{slug}}}}", "variables": {}}
+req = urllib.request.Request("https://leetcode.com/graphql", json.dumps(q).encode(),
+    {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0", "Referer": "https://leetcode.com"})
+d = json.load(urllib.request.urlopen(req, timeout=15))
+for t in sorted(e["node"]["slug"] for e in d["data"]["questionTopicTags"]["edges"]):
+    print(t)
+EOF
+fi
+
+q=$1
+slug=""
+case "$q" in
+*leetcode.com/problems/*)
+	slug=${q##*/problems/}
+	slug=${slug%%\?*}
+	slug=${slug%%/*}
+	q=$slug
+	;;
+esac
+
+id=""
+if [ -n "$slug" ]
+then
+	d=$(ls -d python/*."$slug" 2>/dev/null | head -1)
+	if [ -z "$d" ]
+	then
+		leetgo pick "$slug" >/dev/null 2>&1
+		d=$(ls -d python/*."$slug" 2>/dev/null | head -1)
+	fi
+else
+case "$q" in
+today)
+	leetgo pick today >/dev/null 2>&1
+	d=$(ls -dt python/*/ | head -1)
+	d=${d%/}
+	;;
+''|*[!0-9]*)
+	NEXT_TAG=$q
+	export NEXT_TAG
+	id=$(/u/.venv/scipy/bin/python - <<'EOF'
+import json, os, re, sys
+tag = os.environ.get("NEXT_TAG", "")
+qs = json.load(open(os.path.expanduser("~/.config/leetgo/cache/leetcode-questions.json")))
+local = set()
+for d in os.listdir("python"):
+    m = re.match(r"0*(\d+)\.", d)
+    if m:
+        local.add(m.group(1))
+solved = set()
+try:
+    solved = set(json.load(open("/u/leetcode/.solved.json")))
+except Exception:
+    pass
+pending = local - solved
+if pending and not tag:
+    print(min(pending, key=int))
+elif tag:
+    import urllib.request
+    cand = []
+    skip = 0
+    while not cand and skip < 4000:
+        gq = {"query": 'query($f: QuestionListFilterInput, $s: Int){questionList(categorySlug: "", limit: 100, skip: $s, filters: $f){data{questionFrontendId difficulty isPaidOnly}}}',
+              "variables": {"f": {"tags": [tag]}, "s": skip}}
+        req = urllib.request.Request("https://leetcode.com/graphql",
+            json.dumps(gq).encode(),
+            {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0",
+             "Referer": "https://leetcode.com"})
+        page = json.load(urllib.request.urlopen(req, timeout=15))["data"]["questionList"]["data"]
+        if not page:
+            break
+        cand = [q for q in page
+                if q["difficulty"] != "Easy"
+                and not q["isPaidOnly"]
+                and q["questionFrontendId"] not in local | solved]
+        skip += 100
+    if not cand:
+        print("no unsolved medium found for tag: " + tag, file=sys.stderr)
+        sys.exit(1)
+    print(min(cand, key=lambda q: int(q["questionFrontendId"]))["questionFrontendId"])
+else:
+    cand = [q for q in qs
+            if q["difficulty"] != "Easy"
+            and not q["isPaidOnly"]
+            and q["questionFrontendId"] not in local | solved]
+    print(min(cand, key=lambda q: int(q["questionFrontendId"]))["questionFrontendId"])
+EOF
+)
+	;;
+*)
+	id=$q
+	;;
+esac
+fi
+
+if [ -n "$id" ]
+then
+	d=$(ls -d python/$(printf %04d "$id").* 2>/dev/null | head -1)
+	if [ -z "$d" ]
+	then
+		leetgo pick "$id" >/dev/null 2>&1
+		d=$(ls -d python/$(printf %04d "$id").* 2>/dev/null | head -1)
+	fi
+fi
+[ -n "$d" ] || exit 1
+id=${d##*/}
+id=${id%%.*}
+while [ "${id#0}" != "$id" ]
+do
+	id=${id#0}
+done
+f=/u/leetcode/$d/solution.py
+plumb -d edit /u/leetcode/$d/question.md
+plumb -d edit "$f"
+wid=""
+for i in 1 2 3 4 5 6 7 8 9 10
+do
+	wid=$(9p read acme/index | awk -v f="$f" '$6 == f {print $1}' | head -1)
+	[ -n "$wid" ] && break
+	sleep 0.1
+done
+[ -n "$wid" ] && printf '\nleetgo test %s -L\nleetgo submit %s' "$id" "$id" |
+	9p write acme/$wid/tag

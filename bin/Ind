@@ -1,0 +1,14 @@
+#!/bin/sh
+echo put | 9p write acme/$winid/ctl
+/u/.venv/scipy/bin/python -c '
+import sys
+f = sys.argv[1]
+out = []
+for line in open(f):
+    body = line.lstrip(" \t")
+    ind = line[:len(line) - len(body)]
+    ind = ind.replace("    \t", "\t\t")
+    ind = "    " * ind.count("\t") + ind.replace("\t", "")
+    out.append(ind + body)
+open(f, "w").write("".join(out))' "$samfile"
+echo get | 9p write acme/$winid/ctl

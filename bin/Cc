@@ -1,0 +1,3 @@
+#!/bin/sh
+echo put | 9p write acme/$winid/ctl
+/usr/bin/cc "$samfile" -o "${samfile%.c}" && exec "${samfile%.c}" "$@"

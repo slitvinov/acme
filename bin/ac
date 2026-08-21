@@ -1,14 +1,22 @@
 HOME=/u
 GIT_PAGER=cat
-PATH=/u/acme/bin:/u/plan9port/bin:/u/.local/bin:/u/go/bin:$PATH
+PLAN9=${PLAN9:-/usr/local/plan9}
 
-export GIT_PAGER HOME
+PATH=/u/acme/bin
+PATH=$PATH:/u/.venv/scipy/bin
+PATH=$PATH:/u/.local/bin:/u/go/bin
+PATH=$PATH:/opt/homebrew/bin:/usr/local/bin
+PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin
+PATH=$PATH:$PLAN9/bin
+
+VIRTUAL_ENV=/u/.venv/scipy
+export GIT_PAGER HOME PLAN9 PATH VIRTUAL_ENV
 unset SHELL
 
 mkdir -p /tmp/ns.$USER.:0
 
 font=Ubuntu
-fontsrv -p . 2>/dev/null | /usr/bin/grep -qx $font/ || font=Menlo-Regular
+fontsrv -p . 2>/dev/null | grep -qx $font/ || font=Menlo-Regular
 
-plumber
+plumber -p /u/acme/bin/plumbing
 exec acme -a -f /mnt/font/$font/15a/font /u/acme/a "$@"

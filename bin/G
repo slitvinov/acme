@@ -1,0 +1,2 @@
+#!/bin/sh
+open "https://www.google.com/search?q=$(printf %s "$*" | /usr/bin/sed 's/ /+/g')"

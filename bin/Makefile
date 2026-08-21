@@ -12,3 +12,5 @@ all:
 	S=`python3 -c 'import site; print(site.getusersitepackages())'` && \
 	mkdir -p $$S && \
 	cp $(PREFIX)/acme/lib/usercustomize.py $$S/usercustomize.py
+	cp $(PREFIX)/acme/lib/usercustomize.py \
+		$(PREFIX)/.venv/scipy/lib/python*/site-packages/sitecustomize.py

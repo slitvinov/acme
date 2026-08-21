@@ -28,10 +28,9 @@ cat > "$APP/Contents/MacOS/Acme" <<EOF
 #!/bin/sh
 export HOME=/u
 export PLAN9=$PLAN9
-export PATH=\$PLAN9/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin
 export NAMESPACE=/tmp/ns.\$USER.:0
 mkdir -p \$NAMESPACE
-exec $AC >/tmp/acme.app.log 2>&1
+exec /bin/sh $AC >/tmp/acme.app.log 2>&1
 EOF
 chmod +x "$APP/Contents/MacOS/Acme"
 
