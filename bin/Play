@@ -1,0 +1,46 @@
+#!/bin/sh
+queue() {
+	case $1 in
+	/*) f=$1 ;;
+	*) f=$(pwd)/$1 ;;
+	esac
+	mpcmd loadfile "\"$f\"" "$2" >/dev/null
+}
+mode=replace
+if [ $# -gt 0 ]
+then
+	for f
+	do
+		queue "$f" $mode
+		mode=append-play
+	done
+	exit 0
+fi
+if [ ! -t 0 ]
+then
+	sel=$(/bin/cat)
+	if [ -n "$sel" ]
+	then
+		printf '%s\n' "$sel" |
+		/usr/bin/sed 's/^[> ] *[0-9]* //' |
+		while IFS= read -r f
+		do
+			[ -n "$f" ] || continue
+			queue "$f" $mode
+			mode=append-play
+		done
+		exit 0
+	fi
+fi
+if [ -S /tmp/mpv ] && printf '\n' | /usr/bin/nc -U /tmp/mpv >/dev/null 2>&1
+then
+	mpcmd set pause no >/dev/null
+else
+	last=$HOME/.mpv.playlist
+	[ -s "$last" ] || exit 1
+	while IFS= read -r f
+	do
+		queue "$f" $mode
+		mode=append-play
+	done < "$last"
+fi

@@ -1,23 +1,12 @@
 /u/acme/acme
 /u/acme/bin
 /u/acme/doc/acme
-
-
 /u/books
 /u/paper
 
 /u/plan9port/src/cmd/acme
 /u/plan9port/src/
 
-setxkbmap -layout us,ru -option grp:caps_toggle
-
 win
 9term
 win python3
-
-
-. $PLAN9/lib/acme.rc
-fn c {
-	echo -n , | winwrite addr
-	winwrite data </dev/null
-}

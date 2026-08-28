@@ -1,0 +1,2 @@
+#!/bin/sh
+mpcmd playlist-next >/dev/null

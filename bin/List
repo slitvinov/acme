@@ -1,0 +1,12 @@
+#!/bin/sh
+printf '{"command": ["get_property", "playlist"]}\n' |
+/usr/bin/nc -U /tmp/mpv |
+/u/.venv/scipy/bin/python -c '
+import json, sys
+for line in sys.stdin:
+    d = json.loads(line)
+    if "data" in d:
+        for i, e in enumerate(d["data"]):
+            cur = ">" if e.get("current") or e.get("playing") else " "
+            print("%s %3d %s" % (cur, i, e.get("filename", "?")))
+        break'

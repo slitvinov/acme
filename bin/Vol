@@ -1,0 +1,2 @@
+#!/bin/sh
+mpcmd add volume "${1:-5}" >/dev/null

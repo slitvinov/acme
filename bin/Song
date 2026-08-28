@@ -1,0 +1,3 @@
+#!/bin/sh
+printf '{"command": ["get_property", "media-title"]}\n' | /usr/bin/nc -U /tmp/mpv |
+/usr/bin/sed 's/.*"data":"\([^"]*\)".*/\1/'

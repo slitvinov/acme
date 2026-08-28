@@ -1,0 +1,2 @@
+#!/bin/sh
+mpcmd cycle pause >/dev/null

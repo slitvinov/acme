@@ -1,0 +1,2 @@
+#!/bin/sh
+mpcmd seek "${1:-30}" >/dev/null

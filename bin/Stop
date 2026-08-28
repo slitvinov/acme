@@ -1,0 +1,5 @@
+#!/bin/sh
+[ -S /tmp/mpv ] || exit 0
+printf '\n' | /usr/bin/nc -U /tmp/mpv >/dev/null 2>&1 || exit 0
+List | /usr/bin/awk '/^>/ {on = 1} on {print substr($0, 7)}' > "$HOME/.mpv.playlist"
+printf 'quit-watch-later\n' | /usr/bin/nc -U /tmp/mpv
