@@ -6,6 +6,11 @@ PATH=/u/acme/bin
 PATH=$PATH:/u/.venv/scipy/bin
 PATH=$PATH:/u/.local/bin:/u/go/bin
 PATH=$PATH:/opt/homebrew/bin:/usr/local/bin
+PATH=$PATH:/u/gcloud/google-cloud-sdk/bin
+PATH=$PATH:/Library/TeX/texbin
+PATH=$PATH:/Applications/quarto/bin
+PATH=$PATH:/u/.orbstack/bin
+PATH=$PATH:/Applications/Emacs.app/Contents/MacOS/bin
 PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin
 PATH=$PATH:$PLAN9/bin
 

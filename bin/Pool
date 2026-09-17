@@ -21,12 +21,12 @@ trap 'exit 1' 1 2 15
 
 t=`/bin/date +%m/%d | /usr/bin/sed 's|^0||; s|/0|/|'`
 
-mkdir -p "$HOME/.cache/Pool"
-out=$HOME/.cache/Pool/`/bin/date +%Y%m%d`
+mkdir -p "/u/.cache/Pool"
+out=/u/.cache/Pool/`/bin/date +%Y%m%d`
 
 if test ! -s "$out"
 then
-    rm -f "$HOME/.cache/Pool"/*
+    rm -f "/u//.cache/Pool"/*
     "$LYNX" -dump "$URL" > "$out" 2>"$err"
     case $? in
         0) ;;
@@ -36,7 +36,14 @@ fi
 
 /usr/bin/awk -v t="$t" '
 /MAC Pool +Blodgett Pool/ { print; f = 1; next }
-f && $1 == t { print; ok = 1; exit }
+f && on && ($0 ~ /^[ \t]*[0-9]+\/[0-9]+([^0-9\/]|$)/ || $0 ~ /^[ \t]*\(BUTTON\)/) && $0 !~ ("^[ \t]*" t "([^0-9/]|$)") { exit }
+f && !on && $0 ~ ("^[ \t]*" t "([^0-9/]|$)") { on = 1; ok = 1 }
+f && on {
+	line = $0
+	gsub(/^[ \t]+/, "", line)
+	gsub(/[ \t]+$/, "", line)
+	if (line != "") print line
+}
 END { exit !ok }' "$out"
 case $? in
     0) ;;
